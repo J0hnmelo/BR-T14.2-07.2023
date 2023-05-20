@@ -31,7 +31,10 @@ class Dinosaur:
             self.dino_run = False
         elif not self.dino_jump:
             self.dino_run = True
-            
+        if user_input[pygame.K_RIGHT]:
+            self.dino_rect.x += 10
+        if user_input[pygame.K_LEFT]:
+            self.dino_rect.x -= 10
         if self.dino_run:
             self.run()
         elif self.dino_jump:
