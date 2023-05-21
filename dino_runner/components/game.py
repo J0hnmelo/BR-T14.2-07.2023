@@ -1,7 +1,12 @@
 import pygame
+<<<<<<< HEAD
 import pygame.font
 import random
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, BIRD,MONTAIN, LARGE_CACTUS, SMALL_CACTUS
+=======
+import random
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD
+>>>>>>> 984c659fbc99625cef82d6f528361768f7a76622
 from dino_runner.components.dinosaur import Dinosaur
 
 
@@ -23,7 +28,11 @@ class Game:
         self.fonte = pygame.font.Font('RobotoCondensed-Regular.ttf', 20)
         self.playing = False
         #speed background
+<<<<<<< HEAD
         self.game_speed = 15
+=======
+        self.game_speed = 20
+>>>>>>> 984c659fbc99625cef82d6f528361768f7a76622
         #speed nuvem
         self.cloud_speed = 5
         #variaveis background
@@ -32,7 +41,11 @@ class Game:
         ##variaveis das nuvens
         self.x_pos_c = 800
         self.y_pos_c = 150
+<<<<<<< HEAD
         self.x_pos_c2 = 1750
+=======
+        self.x_pos_c2 = 1000
+>>>>>>> 984c659fbc99625cef82d6f528361768f7a76622
         self.y_pos_c2 = 50
         self.x_pos_c3 = 330
         self.y_pos_c3 = 0
@@ -43,6 +56,7 @@ class Game:
         self.y_pos_c_s = 100
         self.x_pos_c2_s = 1200
         self.y_pos_c2_s = 250
+<<<<<<< HEAD
         ##variaveis do bird
         self.image_bird = BIRD[0] #estado inicial
         self.bird_rect = self.image_bird.get_rect()
@@ -81,6 +95,8 @@ class Game:
         self.image_l_cactust0_w = self.image_l_cactust0.get_width()
         self.image_l_cactust1_w = self.image_l_cactust1.get_width()
         self.image_l_cactust2_w = self.image_l_cactust2.get_width()
+=======
+>>>>>>> 984c659fbc99625cef82d6f528361768f7a76622
 
     def run(self):
         # Game loop: events - update - draw
@@ -109,6 +125,7 @@ class Game:
 
     def draw(self):
         self.clock.tick(FPS)
+<<<<<<< HEAD
         self.screen.fill((25, 25, 25))
         self.draw_background()
         self.draw_cloud()
@@ -119,6 +136,12 @@ class Game:
             self.generete_large_cactus()
         self.generete_small_cactus()
         self.montain_draw()
+=======
+        self.screen.fill((0, 0, 255))
+        self.draw_background()
+        self.draw_cloud()
+        self.cloud_draw_second()
+>>>>>>> 984c659fbc99625cef82d6f528361768f7a76622
         self.player.draw(self.screen)
         self.score()
 
@@ -139,6 +162,7 @@ class Game:
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
 
+<<<<<<< HEAD
 
 
 
@@ -148,6 +172,9 @@ class Game:
 
 
     def draw_cloud(self):##reconstruir fazendo um dicionario
+=======
+    def draw_cloud(self):
+>>>>>>> 984c659fbc99625cef82d6f528361768f7a76622
         image_c_width = CLOUD.get_width()
         self.screen.blit(CLOUD, (self.x_pos_c, self.y_pos_c))
         self.screen.blit(CLOUD, ( self.x_pos_c2, self.y_pos_c2))
@@ -160,7 +187,11 @@ class Game:
             self.screen.blit(CLOUD, ( self.x_pos_c4, self.y_pos_c4))
             self.x_pos_c = 1100 + 1 * random.randint(100,600)
             self.y_pos_c = 200 + 1 * random.randint(-100, 70)
+<<<<<<< HEAD
             self.x_pos_c2 = 1750 + 1 * random.randint(100,600)
+=======
+            self.x_pos_c2 = 1300 + 1 * random.randint(100,600)
+>>>>>>> 984c659fbc99625cef82d6f528361768f7a76622
             self.y_pos_c2 = 110 + 1 * random.randint(-100, 70)
             self.x_pos_c3 = 1400 + 1 * random.randint(100,600)
             self.y_pos_c3 =  280 + 1 * random.randint(-130,10)
@@ -187,6 +218,7 @@ class Game:
         self.x_pos_c_s -= self.cloud_speed
         self.x_pos_c2_s -= self.cloud_speed 
 
+<<<<<<< HEAD
 
 
 
@@ -273,3 +305,5 @@ class Game:
    
 
 
+=======
+>>>>>>> 984c659fbc99625cef82d6f528361768f7a76622
