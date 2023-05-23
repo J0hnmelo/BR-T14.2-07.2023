@@ -13,6 +13,7 @@ class Dinosaur:
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = 10
         self.dino_rect.y = Y_POS
+        
         self.step_count = 0
         
         self.dino_run = True
@@ -33,12 +34,17 @@ class Dinosaur:
             self.dino_run = True
         if user_input[pygame.K_RIGHT]:
             self.dino_rect.x += 10
+<<<<<<< HEAD
             if self.dino_rect.x >= 1100 - self.image_width:
                 self.dino_rect.x = 1100 - self.image_width
         if user_input[pygame.K_LEFT]:
             self.dino_rect.x -= 10
             if self.dino_rect.x <= 0:
                 self.dino_rect.x = 0
+=======
+        if user_input[pygame.K_LEFT]:
+            self.dino_rect.x -= 10
+>>>>>>> 984c659fbc99625cef82d6f528361768f7a76622
         if self.dino_run:
             self.run()
         elif self.dino_jump:
