@@ -253,6 +253,7 @@ class Game:
         self.player = Dinosaur()
         self.score = 0
         self.game_speed = 20
+        self.life = 3
     
     def continue_game(self):
         if self.life > 0:
