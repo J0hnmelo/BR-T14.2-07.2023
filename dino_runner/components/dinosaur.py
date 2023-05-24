@@ -1,15 +1,16 @@
 import pygame
 
-from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING
+from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING, SCREEN_WIDTH
 
 Y_POS = 310
 Y_POS_DUCK = 340
 JUMP_VEL = 8.5
+WALK = 5
+
 
 class Dinosaur:
     def __init__(self):
         self.image = RUNNING[0]
-        self.image_width = RUNNING[0].get_width()
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = 10
         self.dino_rect.y = Y_POS
@@ -24,22 +25,25 @@ class Dinosaur:
     
     def update(self, user_input):
         
-        if user_input[pygame.K_UP]:
+        if user_input[pygame.K_RIGHT]:
+            self.dino_rect.x = self.dino_rect.x >= SCREEN_WIDTH - self.dino_rect.width and self.dino_rect.x or self.dino_rect.x + WALK
+        elif user_input[pygame.K_LEFT]:
+            self.dino_rect.x = self.dino_rect.x <= 0 and self.dino_rect.x or self.dino_rect.x - WALK
+        
+        if user_input[pygame.K_UP] and self.dino_rect.y == Y_POS:
             self.dino_run = False
             self.dino_jump = True
-        if user_input[pygame.K_DOWN]:
+        elif user_input[pygame.K_DOWN]:
             self.dino_duck = True
             self.dino_run = False
         elif not self.dino_jump:
             self.dino_run = True
-        if user_input[pygame.K_RIGHT]:
-            self.dino_rect.x += 10
-            if self.dino_rect.x >= 1100 - self.image_width:
-                self.dino_rect.x = 1100 - self.image_width
-        if user_input[pygame.K_LEFT]:
-            self.dino_rect.x -= 10
-            if self.dino_rect.x <= 0:
-                self.dino_rect.x = 0
+           
+        if user_input[pygame.K_DOWN] and self.dino_jump == True:
+            self.dino_rect.y -= self.jump_vel * 5
+            if self.dino_rect.y >= 300 :
+                self.dino_rect.y = Y_POS
+                
         if self.dino_run:
             self.run()
         elif self.dino_jump:
@@ -47,17 +51,17 @@ class Dinosaur:
         elif self.dino_duck:
             self.duck()
         
-        if self.step_count > 5:
+        if self.step_count > 9:
             self.step_count = 0
     
     def run(self):
-        self.image = RUNNING[self.step_count//3]
+        self.image = RUNNING[self.step_count//5]
         self.dino_rect.y = Y_POS
         
         self.step_count+=1
     
     def duck(self):
-        self.image = DUCKING[self.step_count//3]
+        self.image = DUCKING[self.step_count//5]
         self.dino_rect.y = Y_POS_DUCK
         
         self.step_count+=1
