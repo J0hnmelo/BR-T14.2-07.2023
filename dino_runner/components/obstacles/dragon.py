@@ -32,6 +32,6 @@ class Dragon(Obstacle):
         if self.moving:
             if not self.touched_ground:
                 self.varia_altura += 20
-                self.rect.y = SCREEN_HEIGHT // 2 + int(50 * math.sin(0.01 * self.varia_altura))
+                self.rect.y = SCREEN_HEIGHT // 1.8 + int(70 * math.sin(0.01 * self.varia_altura))
                
 

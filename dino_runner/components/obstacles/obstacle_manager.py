@@ -4,7 +4,7 @@ import pygame
 from dino_runner.components.obstacles.cactus import Cactus
 from dino_runner.components.obstacles.bird import Bird
 from dino_runner.components.obstacles.dragon import Dragon
-from dino_runner.utils.constants import SMALL_CACTUS, LARGE_CACTUS, BIRD, DRAGON
+from dino_runner.utils.constants import SMALL_CACTUS, LARGE_CACTUS, BIRD, DRAGON,GO_SOUND
 
 
 class ObstacleManager:
@@ -18,23 +18,27 @@ class ObstacleManager:
                 self.obstacles.append(Cactus(SMALL_CACTUS[random.randint(0,2)]))
             elif option == 2:
                 cactus = Cactus(LARGE_CACTUS[random.randint(0,2)])
-                cactus.rect.y = 300# mudando a posição do cactus Largo
+                cactus.rect.y = 377# mudando a posição do cactus Largo
                 self.obstacles.append(cactus)
             elif option == 3:
                 self.obstacles.append(Bird(BIRD))
             elif option == 4:
                 self.obstacles.append(Dragon(DRAGON))
-        
-                
+         
         for obstacle in self.obstacles:
             obstacle.update(game.game_speed, self.obstacles)
             
             if game.player.dino_rect.colliderect(obstacle.rect):
-                pygame.time.delay(500)
-                game.playing = False
-                game.death_count += 1
-            
-        
+                if not game.player.has_power_up:
+                    pygame.time.delay(500)
+                    game.playing = False
+                    game.death_count += 1
+                    pygame.mixer.music.load(GO_SOUND)
+                    pygame.mixer.music.play(-1)
+                    game.life -=1
+                else:
+                    self.obstacles.remove(obstacle)
+                
     def draw(self,screen):
         for obstacle in self.obstacles:
             obstacle.draw(screen)

@@ -11,7 +11,7 @@ IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 FONT_STYLE = "freesansbold.ttf"
 
 #Constante obstaculos
-OBSTACLE_Y_POS = 325
+OBSTACLE_Y_POS = 404
 
 # Assets Constants
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
@@ -74,10 +74,28 @@ DRAGON = [
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
-MONTAIN = pygame.image.load(os.path.join(IMG_DIR, 'Other/montain.png'))
+HO_OH = [
+    pygame.image.load(os.path.join(IMG_DIR, 'Other/hoho1.png')),
+    pygame.image.load(os.path.join(IMG_DIR, 'Other/hoho2.png')),
+]
+
+POKE = pygame.image.load(os.path.join(IMG_DIR, 'Other/pokemon-logo-menu.png'))
+
+GO = pygame.image.load(os.path.join(IMG_DIR, 'Other/game_over.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
+JUMP_SOUND = os.path.join(IMG_DIR, 'Other/jump.mp3')
+
+BG_SOUND = os.path.join(IMG_DIR, 'Other/in_game.mp3')
+
+GO_SOUND = os.path.join(IMG_DIR, 'Other/game_over.mp3')
+
+MENU_SOUND = os.path.join(IMG_DIR, 'Other/inicial.mp3')
+
 DEFAULT_TYPE = "default"
+SHIELD_TYPE = "shield"
+HAMMER_TYPE = "hammer"
+HEART_TYPE = "default"
